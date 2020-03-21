@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Mar 20 17:55:42 2020
+Updated Daily
 
-@author: Shirin
 """
 
 
@@ -32,3 +31,7 @@ def filter_primes(num):
     return [i for i in num if is_prime(i)]
 
 
+<<<<<<< HEAD
+=======
+    return [sep_.join(i) for i in product(*lst)]
+>>>>>>> b2fd7a9f39771a31d9759dfd3682e3dd2530fa9b
