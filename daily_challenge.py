@@ -9,7 +9,6 @@ Updated Daily
 from itertools import product 
 
 def combinator(lst, sep_=""):
-
     '''
     Given a list of string lists, returns a list of all 
     combinations as concatenated strings.
@@ -19,10 +18,13 @@ def combinator(lst, sep_=""):
 
 
 def is_prime(n):
+    if n == 1:
+        return False
     for i in range(2, n):
         if n % i == 0:
             return False
     return True
+
 
 def filter_primes(num):
     '''
@@ -31,7 +33,10 @@ def filter_primes(num):
     return [i for i in num if is_prime(i)]
 
 
-<<<<<<< HEAD
-=======
-    return [sep_.join(i) for i in product(*lst)]
->>>>>>> b2fd7a9f39771a31d9759dfd3682e3dd2530fa9b
+def advanced_sort(lst):
+    '''
+    Takes a list of numbers or strings and returns a list 
+    with the items from the original list stored into sublists. 
+    Items of the same value should be in the same sublist.
+    '''
+	return [[i] * lst.count(i) for i in sorted(set(lst), key=lst.index)]
