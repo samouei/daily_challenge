@@ -87,22 +87,25 @@ def is_ladder_safe(ldr):
     pattern = ['r' if i == rung else 'g' if i == gap else 'c' for i in ldr]
     return len(ldr[0]) > 4 and pattern == pattern[::-1] and 'ggg' not in ''.join(pattern)
 
-def valid_color (color):
-    digits = re.findall(r'[0-9]+', color)
-    if len(digits) < 3:
-        return False
-    if "a" in color:
-        if len(digits) != 4 or eval(digits[3] + '> 1'):
-            return False     
-    for val in digits[:3]:
-        if int(val) > 255:
-            return False
-    return True
 
-print(valid_color("rgb(0,0,0)")) #➞ True
+def min_length(lst, n):
+	res = []
+	for i in range(len(lst)):
+		for j in range(i + 1, len(lst) + 1):
+			sublist = lst[i:j]
+			if sum(sublist) > n:
+				res.append(len(sublist))
+	return min(res) if res else -1
 
-print(valid_color("rgb(0,,0)")) #➞ False
 
-print(valid_color("rgb(255,256,255)")) #➞ False
+def min_turns(current, target):
+    '''
+    Create a function that returns the smallest number of turns it takes 
+    to transform the lock from the current combination to the target combination. 
+    One turn is equivalent to rolling a number forwards or backwards by one.
+    '''
+	c = [int(i) for i in list(current)]
+	t = [int(i) for i in list(target)]
+	return sum([min(abs(c[i] - t[i]), 10 - abs(c[i] - t[i])) for i in range(4)])
 
-print(valid_color("rgba(0,0,0,0.123456789)")) #➞ True)
+
